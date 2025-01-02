@@ -62,22 +62,23 @@ public class VillagerUtilities {
         NamespacedKey key = new NamespacedKey(plugin, COOLDOWN_KEY);
         container.set(key, PersistentDataType.LONG, (System.currentTimeMillis() / 1000) + cooldown);
     }
+    
     public static boolean hasCooldown(Villager v, AntiVillagerLag plugin) {
         PersistentDataContainer container = v.getPersistentDataContainer();
         NamespacedKey key = new NamespacedKey(plugin, COOLDOWN_KEY);
         return container.has(key, PersistentDataType.LONG);
     }
+
     public static long getCooldown(Villager v, AntiVillagerLag plugin) {
         PersistentDataContainer container = v.getPersistentDataContainer();
         NamespacedKey key = new NamespacedKey(plugin, COOLDOWN_KEY);
         return container.get(key, PersistentDataType.LONG);
     }
+
     public static String replaceText(String text, String stuff2cut, String replacement) {
-        int index = text.indexOf(stuff2cut);
-        String text1 = text.substring(0, index);
-        String text2 = text.substring(index + stuff2cut.length());
-        return text1 + replacement + text2;
+        return text.replace(stuff2cut, replacement);
     }
+
     public static void restock(Villager v) {
         List<MerchantRecipe> recipes = v.getRecipes();
         for (MerchantRecipe r: recipes) {
